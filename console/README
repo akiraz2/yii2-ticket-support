@@ -1,0 +1,8 @@
+
+if(class_exists('yii\mongodb\console\controllers\MigrateController')){
+    $map=[
+        'controllerMap' => [
+            'mongodb-migrate' => 'yii\mongodb\console\controllers\MigrateController'
+        ],
+    ];
+}

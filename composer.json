@@ -1,0 +1,34 @@
+{
+  "name": "akiraz2/yii2-ticket-support",
+  "description": "Yii2 Support Ticket System",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "support",
+    "ticket"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "akiraz2",
+      "email": "akiraz@bk.ru"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "yiisoft/yii2": "~2.0",
+    "hashids/hashids": "^2.0",
+    "yiidoc/yii2-redactor": "*",
+    "php-imap/php-imap": "^3.0",
+    "yiisoft/yii2-queue": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "akiraz2\\support\\": ""
+    }
+  },
+  "extra": {
+    "bootstrap": "akiraz2\\support\\Bootstrap"
+  }
+}

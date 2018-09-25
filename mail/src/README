@@ -1,0 +1,1 @@
+grunt --dist=../vendor/akiraz2/yii2-ticket-support/mail
