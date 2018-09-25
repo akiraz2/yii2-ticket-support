@@ -1,11 +1,12 @@
 {
   "name": "akiraz2/yii2-ticket-support",
-  "description": "Yii2 Support Ticket System",
+  "description": "Yii2 Support Ticket Module, easy, flexible, fast",
   "type": "yii2-extension",
   "keywords": [
     "yii2",
     "support",
-    "ticket"
+    "ticket",
+    "module"
   ],
   "license": "MIT",
   "authors": [
