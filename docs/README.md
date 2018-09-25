@@ -3,6 +3,7 @@
 ## Getting Started
 
 - [Installation](getting-started.md)
+- Configuration - not ready
 - [Console commands](console.md)
 
 ## Overriding
@@ -13,6 +14,15 @@
 
 - [Mailer](mailer.md)
 
+## Translations
+
+Please translate to your language! Edit config (or copy to your path) `@vendor/akiraz2/yii2-blog/src/messages/config.php`, add your language and run script:
+```php
+php ./yii message/extract @vendor/akiraz2/yii2-ticket-support/messages/config.php
+```
+translate file will be in `@vendor/akiraz2/yii2-ticket-support/messages/` or your configured path
+
+
 ## RBAC
 
-- Not yet
+- Not ready

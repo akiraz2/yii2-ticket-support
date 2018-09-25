@@ -9,11 +9,10 @@ Mailer can be configured as followed:
 
 ```php
 ...
-'user' => [
+'support' => [
     'class' => 'akiraz2\support\Module',
     'mailer' => [
-        'sender'                => 'no-reply@myhost.com', // or ['no-reply@myhost.com' => 'Sender name']
-        
+        'sender' => 'support@myhost.com', // or ['support@myhost.com' => 'Technical Support']  
 ],
 ...
 ```

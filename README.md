@@ -33,12 +33,15 @@ All installation instructions are located in documentation / [Installation](docs
 
 ## TODO
 
+* write documentation
 * refactoring Mongodb
 * add more languages
 * more console commands
 * rest controllers for api app
 * view theme (blue, red, green, gray, dark, etc)
 * improve from simple to powerful
+* RBAC integration (role support manager)
+* tests
 
 ## Support
 

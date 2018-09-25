@@ -13,7 +13,7 @@ use yii\db\Query;
 
 /**
  * Class MigrateController
- * @package akiraz2\contact\console
+ *
  */
 class MigrateController extends \yii\console\Controller
 {

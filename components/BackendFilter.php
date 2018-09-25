@@ -21,7 +21,7 @@ use yii\web\NotFoundHttpException;
  * {
  *     return [
  *         'backend' => [
- *             'class' => common\components\BackendFilter::class,
+ *             'class' => akiraz2\support\components\BackendFilter::class,
  *             'actions' => [
  *                 'index',
  *                 'view',
