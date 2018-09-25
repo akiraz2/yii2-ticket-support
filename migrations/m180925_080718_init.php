@@ -10,9 +10,6 @@ namespace akiraz2\support\migrations;
 
 use yii\db\Migration;
 
-/**
- * Class m170511_080718_init
- */
 class m180925_080718_init extends Migration
 {
     use \akiraz2\support\traits\ModuleTrait;

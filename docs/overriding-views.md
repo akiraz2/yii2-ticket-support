@@ -21,14 +21,20 @@ configure your view application component as follows:
 In the above `pathMap` means that every view in @akiraz2/support/views will be first searched under `@app/views/support` and
 if a view exists in the theme directory it will be used instead of the original view.
 
-## Example
+## How to change controller's layout?
 
-An example of overriding the registration page view is demonstrated below. First make sure you have configured view
-application component.
+You can change controller's layout using `controllerMap` module's property:
 
-In order to override the registration view file you should create `@app/views/support/ticket/index.php`. Open it
-and paste in the following code:
-
-
-Then open registration page and make sure that you see **'This view file has been overriden!'**. If you don't see it
-make sure you have properly configured your view component and created view file in right location.
+```php
+        'modules' => [
+            'support' => [
+                'class' => 'akiraz2\support\Module',
+                'controllerMap' => [
+                    'ticket' => [
+                        'class'  => 'akiraz2\support\controllers\TicketController',
+                        'layout' => '//cabinet',//@frontend/views/layouts/cabinet
+                    ],
+                ],
+            ],
+],
+```

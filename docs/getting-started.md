@@ -21,6 +21,7 @@ Add following lines to your main configuration file:
 'modules' => [
     'support' => [
         'class' => 'akiraz2\support\Module',
+        'userModel' => 'common\models\User'
     ],
 ],
 ```
@@ -42,8 +43,8 @@ return [
             'class' => 'yii\console\controllers\MigrateController',
             'migrationPath' => null,
             'migrationNamespaces' => [
-                'console\migrations',                
-                'powerkernel\support\migrations'
+                //'console\migrations',                
+                'akiraz2\support\migrations'
             ],
         ],
     ],
