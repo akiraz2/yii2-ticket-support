@@ -14,11 +14,8 @@
 $this->params['breadcrumbs'][] = ['label' => \akiraz2\support\Module::t('support', 'Tickets'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-/* misc */
-//$js=file_get_contents(__DIR__.'/index.min.js');
-//$this->registerJs($js);
-//$css=file_get_contents(__DIR__.'/index.css');
-//$this->registerCss($css);
+\akiraz2\support\assets\TicketAsset::register($this);
+
 ?>
 <div class="ticket-create">
     <div class="box box-success">

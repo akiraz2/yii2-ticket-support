@@ -21,7 +21,8 @@
     "hashids/hashids": "^2.0",
     "yiidoc/yii2-redactor": "*",
     "php-imap/php-imap": "^3.0",
-    "yiisoft/yii2-queue": "~2.0"
+    "yiisoft/yii2-queue": "~2.0",
+    "rmrevin/yii2-fontawesome": "~2.17"
   },
   "autoload": {
     "psr-4": {

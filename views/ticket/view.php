@@ -15,6 +15,8 @@ use yii\widgets\ActiveForm;
 /* @var $model akiraz2\support\models\Ticket */
 /* @var $reply akiraz2\support\models\Content */
 
+\akiraz2\support\assets\TicketAsset::register($this);
+
 $this->params['breadcrumbs'][] = ['label' => \akiraz2\support\Module::t('support', 'Tickets'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 

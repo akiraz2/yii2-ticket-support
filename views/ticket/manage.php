@@ -16,6 +16,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel akiraz2\support\models\TicketSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+\akiraz2\support\assets\TicketAsset::register($this);
 
 /* breadcrumbs */
 $this->params['breadcrumbs'][] = $this->title;
