@@ -6,7 +6,6 @@
  * @license MIT
  */
 
-use akiraz2\fontawesome\Icon;
 use akiraz2\support\models\Ticket;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -19,19 +18,14 @@ use yii\widgets\ActiveForm;
 $this->params['breadcrumbs'][] = ['label' => \akiraz2\support\Module::t('support', 'Tickets'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-/* misc */
-//$js=file_get_contents(__DIR__.'/index.min.js');
-//$this->registerJs($js);
-//$css=file_get_contents(__DIR__.'/index.css');
-//$this->registerCss($css);
 ?>
 <div class="ticket-view">
     <div class="box box-info">
         <div class="box-header with-border">
-            <h1 class="box-title">Ticket &num;<?= $model->hash_id ?> <?= $model->title ?>
-                <small style="margin-left: 10px"><?= $model->category? $model->category->title : '-' ?></small>
+            <h2 class="box-title">Ticket &num;<?= $model->hash_id ?> <?= $model->title ?>
+                <small style="margin-left: 10px"><?= $model->category ? $model->category->title : '-' ?></small>
                 <small style="margin-left: 10px"><?= $model->getType() ?></small>
-            </h1>
+            </h2>
 
             <div class="pull-right">
                 <?= \akiraz2\support\Module::t('support', 'Status: {STATUS}',
@@ -68,7 +62,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div style="padding-top: 10px">
                 <?php $form = ActiveForm::begin(); ?>
-                <?= $form->field($reply, 'content')->widget(\yii\redactor\widgets\Redactor::className())->label(false) ?>
+                <?php
+                if (Yii::$app->getModule('support')->getIsBackend()) {
+                    echo $form->field($reply, 'content')->widget(\yii\redactor\widgets\Redactor::className())->label(false);
+                } else {
+                    echo $form->field($reply, 'content')->textarea()->label(false);
+                }
+                ?>
                 <div class="form-group">
                     <?= \yii\helpers\Html::submitButton(\akiraz2\support\Module::t('support', 'Reply'),
                         ['class' => 'btn btn-primary']) ?>
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php if ($model->status != Ticket::STATUS_CLOSED): ?>
                         <?= Html::a(\akiraz2\support\Module::t('support', 'Close'), [
                             'close',
-                            'id' =>  $model->hash_id
+                            'id' => $model->hash_id
                         ], ['class' => 'btn btn-warning']) ?>
                     <?php endif; ?>
                 </div>

@@ -46,12 +46,14 @@ class Bootstrap implements BootstrapInterface
 
             $app->urlManager->addRules(
                 [
+                    '<_m:support>/new-ticket' => '<_m>/ticket/create',
                     '<_m:support>/<id:\w+>' => '<_m>/ticket/view',
                     '<_m:support>' => '<_m>/ticket/index',
                 ]
             );
             $app->get($this->getModule()->urlManagerFrontend)->addRules(
                 [
+                    '<_m:support>/new-ticket' => '<_m>/ticket/create',
                     '<_m:support>/<id:\w+>' => '<_m>/ticket/view',
                     '<_m:support>' => '<_m>/ticket/index',
                 ]

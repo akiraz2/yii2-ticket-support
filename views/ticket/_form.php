@@ -12,13 +12,14 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model akiraz2\support\models\Ticket */
 /* @var $form yii\widgets\ActiveForm */
+$catList = Category::getCatList();
 ?>
 
 <div class="ticket-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(Category::getCatList()) ?>
+    <?= count($catList) ? $form->field($model, 'category_id')->dropDownList($catList) : '' ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
