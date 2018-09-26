@@ -5,18 +5,18 @@ Yii2 Support Ticket System - simple, flexible module for Yii2 advanced template 
 The latest version includes following features:
 
 * very easy, simple and **fast** (only 3 tables: category, ticket, messages)
-* 1 ticket has many messages
 * Tickets has title, category, priority, users email and name, can link user id
 * Module can **parse mailbox** and automatically add new tickets (or add new messages to ticket)
 * Auto close tickets after 7 days of inactivity (by cron or backend app)
 * Ticket management (in backend app - admin users can use [Redactor Widget](https://github.com/yiidoc/yii2-redactor))
 * Console commands (`yii support/ticket/close`)
 * ID of ticket are [**hashed**](https://packagist.org/packages/hashids/hashids)
-* compact SEO URL rules
+* Compact SEO URL rules
 * Module use [yii2-queue](https://github.com/yiisoft/yii2-queue) for background and cron jobs (Sync queue by default, you can use DB, Redis or other)
 * Module can use **independent Mailer** component, own config (smtp, user, pass)
-* Multi language (en, ru)
+* Multi-lingual (en, ru)
 * You can use own style css
+* Can replace real username(login) of Support (configurable)
 * MongoDB
 
 > **NOTE:** Module is in initial development. Anything may change at any time.
@@ -33,15 +33,21 @@ All installation instructions are located in documentation / [Installation](docs
 
 ## TODO
 
-* write documentation
+* write documentation (configuration, faq)
 * refactoring Mongodb
-* add more languages
+* add more languages (cn)
 * more console commands
 * rest controllers for api app
 * view theme (blue, red, green, gray, dark, etc)
-* improve from simple to powerful
-* RBAC integration (role support manager)
-* tests
+* improve from simple to powerful (customer portal or support center like a pro)
+* **RBAC** integration (role support manager)
+* **tests**!!!
+* check ticket status for users
+* assignment other manager
+* attachments (files, documents, images)
+* statistic
+* Multichannel ticketing
+* more notifications (push, telegram, viber, whatsapp, wechat)
 
 ## Support
 

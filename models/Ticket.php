@@ -8,10 +8,10 @@
 
 namespace akiraz2\support\models;
 
-use Hashids\Hashids;
-use PhpImap\IncomingMail;
 use akiraz2\support\Mailer;
 use akiraz2\support\traits\ModuleTrait;
+use Hashids\Hashids;
+use PhpImap\IncomingMail;
 use Yii;
 
 /**
@@ -54,6 +54,7 @@ class Ticket extends TicketBase
     public $info;
     public $mail_id;
     public $fetch_date;
+
     /**
      * get status text
      * @return string

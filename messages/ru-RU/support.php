@@ -17,10 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Email' => 'Email',
-    'Site' => 'Сайт',
-    'Telegram' => 'Telegram',
+    'Last tickets' => 'Последние тикеты',
+    'New Tickets Today' => 'Новые тикеты на сегодня',
     'Tickets closed: oun' => '',
+    'Unanswered tickets' => 'Неотвеченные тикеты',
     'STATUS_ACTIVE' => '@@СТАТУС АКТИВ@@',
     'STATUS_DELETED' => '@@СТАТУС УДАЛЕНО@@',
     'STATUS_INACTIVE' => '@@СТАТУС НЕАКТИВ@@',
@@ -38,6 +38,7 @@ return [
     'Created At' => 'Создано',
     'Created By' => 'Создано',
     'Delete' => 'Удалить',
+    'Email' => 'Email',
     'Greetings from {APP},' => 'Приветствие из {APP},',
     'Hello Admin,' => 'Привет Админ',
     'ID' => 'ID',
@@ -49,9 +50,11 @@ return [
     'Reply' => 'Ответить',
     'Reset' => 'Сброс',
     'Search' => 'Поиск',
+    'Site' => 'Сайт',
     'Status' => 'Статус',
     'Status: {STATUS}' => 'Статус: {STATUS}',
     'Subject: {TITLE}' => 'Тема: {TITLE}',
+    'Telegram' => 'Telegram',
     'Ticket #{ID}' => 'Тикет #{ID}',
     'Ticket #{ID}: New reply from {NAME}:' => 'Тикет #{ID}: Новый ответ от {NAME}:',
     'Ticket System' => 'Система тикетов',

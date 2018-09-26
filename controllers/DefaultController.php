@@ -9,6 +9,8 @@
 namespace akiraz2\support\controllers;
 
 use akiraz2\support\components\BackendFilter;
+use akiraz2\support\jobs\FetchMailJob;
+use akiraz2\support\models\Ticket;
 use akiraz2\support\traits\ModuleTrait;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -29,7 +31,7 @@ class DefaultController extends Controller
             'backend' => [
                 'class' => BackendFilter::className(),
                 'actions' => [
-                    'index',
+                    '*',
                 ],
             ],
             'access' => [
@@ -54,5 +56,14 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionFetchMail()
+    {
+        $id = \Yii::$app->get($this->getModule()->queueComponent)->push(new FetchMailJob());
+        if ($id) {
+            \Yii::$app->session->setFlash('success', \akiraz2\support\Module::t('support', 'Added job to fetch tickets from mailbox, please wait'));
+        }
+        return $this->redirect('index');
     }
 }

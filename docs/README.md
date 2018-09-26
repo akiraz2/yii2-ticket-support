@@ -6,6 +6,17 @@
 - Configuration - not ready
 - [Console commands](console.md)
 
+## Usage
+
+Available urls for admins:
+- `/support/default/index` - start page for admin
+- `/support/category/index`
+- `/support/ticket/manage`
+
+Start page for users
+
+- `/support/ticket/index`
+
 ## Overriding
 
 - [Overriding views](overriding-views.md)

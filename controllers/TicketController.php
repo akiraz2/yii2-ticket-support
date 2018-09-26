@@ -206,7 +206,7 @@ class TicketController extends Controller
 
         return $this->redirect([
             'view',
-            'id' => is_a($model, '\yii\mongodb\ActiveRecord') ? (string)$model->_id : $model->id
+            'id' => $model->hash_id
         ]);
     }
 

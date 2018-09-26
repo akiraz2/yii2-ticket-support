@@ -8,6 +8,9 @@
 
 namespace akiraz2\support;
 
+use akiraz2\support\models\Content;
+use akiraz2\support\models\Ticket;
+use PhpImap\Mailbox;
 use Yii;
 use yii\queue\Queue;
 
@@ -68,6 +71,18 @@ class Module extends \yii\base\Module
     public $queueComponent = 'queue';
 
     public $countDaysToClose = 7;
+
+    /** @var array Imap config for fetch mailbox
+     * 'imap' => [
+        'host' => 'imap.site.com',
+        'username' => 'support@site.com',
+        'password' => '123456789879',
+    ] */
+    public $imap = [];
+
+    public $showUsernameSupport = true;
+
+    public $userNameSupport = 'Support';
 
     /**
      * Translate message
@@ -140,5 +155,58 @@ class Module extends \yii\base\Module
     public function getIsBackend()
     {
         return Yii::$app->id === $this->appBackendId;
+    }
+
+    public function fetchMail()
+    {
+        $mailbox = $this->getImapMailBox();
+        if ($mailbox == null) {
+            return false;
+        }
+        $mailsIds = $mailbox->searchMailbox('ALL');
+        if (!$mailsIds) {
+            return false;
+        }
+        $name = Yii::$app->name;
+        for ($i = 0; $i < count($mailsIds); $i++) {
+            $mail = $mailbox->getMail($mailsIds[$i], false);
+            preg_match("/\[$name.*#(.{10,})\]/", $mail->subject, $output_array);
+            if (isset($output_array[1]) && ($ticket = Ticket::findOne(['hash_id' => $output_array[1], 'user_contact' => $mail->fromAddress])) !== null) {
+                // reply
+                $reply = new Content();
+                $reply->id_ticket = $ticket->id;
+                $reply->mail_id = $mail->id;
+                $reply->fetch_date = $mail->date;
+                $reply->user_id = $ticket->user_id;
+                $reply->content = $mail->textHtml ?? $mail->textPlain;
+                $reply->info = $mail->headersRaw;
+                $reply->save();
+                $ticket->status = Ticket::STATUS_OPEN;
+                $ticket->save();
+            } else {
+                $ticket = new Ticket();
+                $ticket->setScenario('create');
+                $ticket->loadFromEmail($mail);
+                $ticket->save();
+            }
+            $mailbox->deleteMail($mailsIds[$i]);
+        }
+        return true;
+    }
+
+    public function getImapMailBox()
+    {
+        if (empty($this->imap)) {
+            return null;
+        }
+        $host = $this->imap['host'];
+        $username = $this->imap['username'];
+        $password = $this->imap['password'];
+        $port = $this->imap['port'] ?? 993;
+        if (!($host && $username && $password)) {
+            return null;
+        }
+        $mailbox = new Mailbox("{" . $host . ":" . $port . "/imap/ssl/novalidate-cert}INBOX", $username, $password);
+        return $mailbox;
     }
 }

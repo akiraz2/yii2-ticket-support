@@ -17,6 +17,3 @@
 ]) ?>
 
 <?= Yii::$app->formatter->asNtext($model->content) ?>
-
-
-<?= \akiraz2\support\Module::t('support', 'View Ticket: {URL}', ['URL' => $model->ticket->getUrl(true)]) ?>

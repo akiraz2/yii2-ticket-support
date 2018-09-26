@@ -37,25 +37,26 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="box-body">
             <ul class="timeline timeline-inverse">
-                <?php foreach ($model->contents as $post) : ?>
+                <?php foreach ($model->contents as $post) {
+                    ?>
                     <li>
                         <?php if (empty($post->user_id)): ?>
                             <i class="fa fa-info-circle bg-aqua"></i>
                         <?php else: ?>
                             <?= Html::tag('i', '',
-                                ['class' => $post->user_id == $model->user_id ? 'fa fa-comments bg-blue' : 'fa fa-comments bg-orange']) ?>
+                                ['class' => $post->isOwn() ? 'fa fa-comments bg-blue' : 'fa fa-comments bg-orange']) ?>
                         <?php endif; ?>
 
                         <div class="timeline-item">
                             <span class="time"><i
-                                        class="fa fa-clock-o"></i> <?= Yii::$app->formatter->asDatetime($post->createdAt) ?></span>
-                            <h3 class="timeline-header"><?= !empty($post->user_id) ? $post->user->{Yii::$app->getModule('support')->userName} : $post->ticket->getNameEmail() ?></h3>
+                                    class="fa fa-clock-o"></i> <?= Yii::$app->formatter->asDatetime($post->createdAt) ?></span>
+                            <h3 class="timeline-header"><?= $post->getUsername() ?></h3>
                             <div class="timeline-body">
                                 <?= Yii::$app->formatter->asHtml($post->content) ?>
                             </div>
                         </div>
                     </li>
-                <?php endforeach; ?>
+                <?php } ?>
                 <li>
                     <i class="fa fa-clock-o"></i>
                 </li>

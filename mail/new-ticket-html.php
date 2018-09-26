@@ -68,17 +68,6 @@ use yii\helpers\Html;
                                     </td>
                                 </tr>
 
-                                <tr>
-                                    <td class="content-block aligncenter" colspan="2"
-                                        style="vertical-align: top; padding: 0 0 20px; text-align: center;" valign="top"
-                                        align="center">
-                                        <a href="<?= $model->getUrl(true) ?>" class="btn-primary"
-                                           style="font-weight: bold; color: #FFF; background-color: #348eda; border: solid #348eda; border-width: 10px 20px; line-height: 2em; text-decoration: none; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize;"><?= \akiraz2\support\Module::t('support',
-                                                'View Ticket') ?></a>
-                                    </td>
-                                </tr>
-
-
                             </table>
                         </td>
                     </tr>

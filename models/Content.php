@@ -149,6 +149,21 @@ class Content extends ContentBase
         }
     }
 
+    public function getUsername()
+    {
+        $showUserSupport = $this->getModule()->showUsernameSupport;
+        $username = !empty($this->user_id) ? $this->user->{$this->getModule()->userName} : $this->ticket->getNameEmail();
+        if(!$this->isOwn() && !$showUserSupport) {
+            $username = $this->getModule()->userNameSupport;
+        }
+        return $username;
+    }
+
+    public function isOwn()
+    {
+        return $this->user_id == $this->ticket->user_id;
+    }
+
     protected function getMailer()
     {
         return \Yii::$container->get(Mailer::className());
