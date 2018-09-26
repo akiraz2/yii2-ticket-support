@@ -42,7 +42,7 @@ $this->registerJs('$(document).on("pjax:send", function(){ $(".grid-view-overlay
                         [
                             'attribute' => 'category_id',
                             'value' => function ($model) {
-                                return $model->category->title;
+                                return $model->category ? $model->category->title: '-';
                             },
                             'filter' => Category::getCatList()
                         ],
