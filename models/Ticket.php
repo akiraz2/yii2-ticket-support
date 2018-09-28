@@ -56,6 +56,24 @@ class Ticket extends TicketBase
     public $fetch_date;
 
     /**
+     * @return array
+     */
+    public function fields()
+    {
+        return [
+            'hash_id',
+            'category',
+            'Type',
+            'title',
+            'StatusText',
+            'created_at' => function ($model) {
+                //$date=new \DateTime($model->created_at);
+                return date("d.m.y H:i:s", $model->created_at);//$date->format('Y-m-d H:i:s');
+            }
+        ];
+    }
+
+    /**
      * get status text
      * @return string
      */
@@ -63,7 +81,7 @@ class Ticket extends TicketBase
     {
         $status = $this->status;
         $list = self::getStatusOption();
-        if (!empty($status) && in_array($status, array_keys($list))) {
+        if (!is_null($status) && in_array($status, array_keys($list))) {
             return $list[$status];
         }
         return \akiraz2\support\Module::t('support', 'Unknown');

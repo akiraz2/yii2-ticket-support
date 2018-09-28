@@ -66,7 +66,7 @@ class Category extends CategoryBase
     {
         $status = $this->status;
         $list = self::getStatusOption();
-        if (!empty($status) && in_array($status, array_keys($list))) {
+        if (!is_null($status) && in_array($status, array_keys($list))) {
             return $list[$status];
         }
         return \akiraz2\support\Module::t('support', 'Unknown');
