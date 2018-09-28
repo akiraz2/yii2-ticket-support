@@ -65,9 +65,9 @@ class Ticket extends TicketBase
             'category',
             'Type',
             'title',
-            'StatusText',
+            'status',
+            'priority',
             'created_at' => function ($model) {
-                //$date=new \DateTime($model->created_at);
                 return date("d.m.y H:i:s", $model->created_at);//$date->format('Y-m-d H:i:s');
             }
         ];

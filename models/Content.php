@@ -37,6 +37,20 @@ class Content extends ContentBase
     const STATUS_INACTIVE = 20;
 
     /**
+     * @return array
+     */
+    public function fields()
+    {
+        return [
+            'content',
+            'user_id',
+            'created_at' => function ($model) {
+                return date("d.m.y H:i:s", $model->created_at);//$date->format('Y-m-d H:i:s');
+            }
+        ];
+    }
+
+    /**
      * get status text
      * @return string
      */
@@ -153,7 +167,7 @@ class Content extends ContentBase
     {
         $showUserSupport = $this->getModule()->showUsernameSupport;
         $username = !empty($this->user_id) ? $this->user->{$this->getModule()->userName} : $this->ticket->getNameEmail();
-        if(!$this->isOwn() && !$showUserSupport) {
+        if (!$this->isOwn() && !$showUserSupport) {
             $username = $this->getModule()->userNameSupport;
         }
         return $username;
