@@ -117,13 +117,9 @@ class TicketController extends Controller
         $reply->id_ticket = $model->id;
         $reply->user_id = Yii::$app->user->id;
         if ($reply->load(Yii::$app->request->post()) && $reply->save()) {
-            if (Yii::$app->user->id == $model->user_id) {
-                $model->status = Ticket::STATUS_OPEN;
-                $model->save();
-            } else {
-                $model->status = Ticket::STATUS_WAITING;
-                $model->save();
-            }
+            $model->status = \Yii::$app->user->id == $model->user_id ? Ticket::STATUS_OPEN : Ticket::STATUS_WAITING;
+            $model->save();
+
             return $this->redirect([
                 'view',
                 'id' => $model->hash_id
@@ -164,14 +160,9 @@ class TicketController extends Controller
         $model->setScenario('create');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect([
-                'view',
-                'id' => $model->hash_id
-            ]);
+            return $this->redirect(['view', 'id' => $model->hash_id]);
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            return $this->render('create', ['model' => $model,]);
         }
     }
 

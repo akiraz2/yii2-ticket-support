@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <i class="fa fa-info-circle bg-aqua"></i>
                         <?php else: ?>
                             <?= Html::tag('i', '',
-                                ['class' => $post->isOwn() ? 'fa fa-comments bg-blue' : 'fa fa-comments bg-orange']) ?>
+                                ['class' => $post->getIsOwn() ? 'fa fa-comments bg-blue' : 'fa fa-comments bg-orange']) ?>
                         <?php endif; ?>
 
                         <div class="timeline-item">

@@ -43,7 +43,8 @@ class Content extends ContentBase
     {
         return [
             'content',
-            'user_id',
+            'isOwn',
+            'Username',
             'created_at' => function ($model) {
                 return date("d.m.y H:i:s", $model->created_at);//$date->format('Y-m-d H:i:s');
             }
@@ -91,6 +92,13 @@ class Content extends ContentBase
         return [
             [['id_ticket', 'content'], 'required'],
             [['content'], 'string'],
+            [
+                'content',
+                'filter',
+                'filter' => function ($value) {
+                    return \yii\helpers\HtmlPurifier::process($value);
+                }
+            ],
             [
                 ['user_id'],
                 'exist',
@@ -167,13 +175,13 @@ class Content extends ContentBase
     {
         $showUserSupport = $this->getModule()->showUsernameSupport;
         $username = !empty($this->user_id) ? $this->user->{$this->getModule()->userName} : $this->ticket->getNameEmail();
-        if (!$this->isOwn() && !$showUserSupport) {
+        if (!$this->getIsOwn() && !$showUserSupport) {
             $username = $this->getModule()->userNameSupport;
         }
         return $username;
     }
 
-    public function isOwn()
+    public function getIsOwn()
     {
         return $this->user_id == $this->ticket->user_id;
     }
