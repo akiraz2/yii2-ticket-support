@@ -178,7 +178,7 @@ class Module extends \yii\base\Module
                 $reply->mail_id = $mail->id;
                 $reply->fetch_date = $mail->date;
                 $reply->user_id = $ticket->user_id;
-                $reply->content = $mail->textHtml ?? $mail->textPlain;
+                $reply->content = strip_tags($mail->textHtml ?? $mail->textPlain);
                 $reply->info = $mail->headersRaw;
                 $reply->save();
                 $ticket->status = Ticket::STATUS_OPEN;
@@ -189,7 +189,7 @@ class Module extends \yii\base\Module
                 $ticket->loadFromEmail($mail);
                 $ticket->save();
             }
-            $mailbox->deleteMail($mailsIds[$i]);
+            //$mailbox->deleteMail($mailsIds[$i]);
         }
         return true;
     }

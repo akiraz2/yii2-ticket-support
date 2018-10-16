@@ -67,7 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php $form = ActiveForm::begin(); ?>
                 <?php
                 if (Yii::$app->getModule('support')->getIsBackend()) {
-                    echo $form->field($reply, 'content')->widget(\yii\redactor\widgets\Redactor::className())->label(false);
+                    echo $form->field($reply, 'content')->textarea()->label(false);
                 } else {
                     echo $form->field($reply, 'content')->textarea()->label(false);
                 }
