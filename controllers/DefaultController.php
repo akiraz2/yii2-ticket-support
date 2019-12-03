@@ -27,13 +27,17 @@ class DefaultController extends Controller
      */
     public function behaviors()
     {
-        return [
-            'backend' => [
+        $array = [];
+        if (!$this->getModule()->yii2basictemplate) {
+            $array = ['backend' => [
                 'class' => BackendFilter::className(),
                 'actions' => [
                     '*',
                 ],
-            ],
+            ]];
+        }
+        
+        return array_merge($array, [
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
@@ -46,7 +50,7 @@ class DefaultController extends Controller
                     ],
                 ],
             ],
-        ];
+        ]);
     }
 
     /**

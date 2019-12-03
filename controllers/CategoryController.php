@@ -31,17 +31,21 @@ class CategoryController extends Controller
      */
     public function behaviors()
     {
-        return [
+        $array = [];
+        if (!$this->getModule()->yii2basictemplate) {
+            $array = ['backend' => [
+                'class' => BackendFilter::className(),
+                'actions' => [
+                    '*',
+                ],
+            ]];
+        }
+        
+        return array_merge($array, [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
-                ],
-            ],
-            'backend' => [
-                'class' => BackendFilter::className(),
-                'actions' => [
-                    '*',
                 ],
             ],
             'access' => [
@@ -56,7 +60,7 @@ class CategoryController extends Controller
                     ]
                 ],
             ],
-        ];
+        ]);
     }
 
     /**

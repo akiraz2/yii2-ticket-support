@@ -83,6 +83,9 @@ class Module extends \yii\base\Module
     public $showUsernameSupport = true;
 
     public $userNameSupport = 'Support';
+    
+    /** @var boolean If true it makes extension compatible to yii2 basic template */
+    public $yii2basictemplate = false;
 
     /**
      * Translate message

@@ -21,7 +21,8 @@ Add following lines to your main configuration file:
 'modules' => [
     'support' => [
         'class' => 'akiraz2\support\Module',
-        'userModel' => 'common\models\User'
+        'userModel' => 'common\models\User',
+        'yii2basictemplate' => false,
     ],
 ],
 ```
