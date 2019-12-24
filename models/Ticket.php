@@ -268,8 +268,14 @@ class Ticket extends TicketBase
     public function afterSave($insert, $changedAttributes)
     {
         if ($insert) {
-            $hash_ids = new Hashids(Yii::$app->name, 10);
-            $hash_id = $hash_ids->encode($this->id); //
+            if( is_callable($this->getModule()->hashGenerator))
+            {
+                $hash_id = call_user_func($this->getModule()->hashGenerator, $this);
+            }
+            else{
+                $hash_ids = new Hashids(Yii::$app->name, 10);
+                $hash_id = $hash_ids->encode($this->id); //
+            }
             $this->updateAttributes(['hash_id' => $hash_id]);
 
             $ticketContent = new Content();

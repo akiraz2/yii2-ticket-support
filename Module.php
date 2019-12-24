@@ -83,6 +83,16 @@ class Module extends \yii\base\Module
     public $showUsernameSupport = true;
 
     public $userNameSupport = 'Support';
+    
+    /**
+     * @var null|false|function Function to generate a hash
+     * for example,
+     *      'hashGenerator' => function ($data) {
+     *          return date('Ymd-His');
+     *      }
+     *
+     */
+    public $hashGenerator = null;    
 
     /**
      * Translate message
