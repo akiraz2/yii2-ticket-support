@@ -22,6 +22,7 @@ Add following lines to your main configuration file:
     'support' => [
         'class' => 'akiraz2\support\Module',
         'userModel' => 'common\models\User',
+        'yii2basictemplate' => false,
         'adminMatchCallback' => false,//false - for frontend, true - for backend
         'hashGenerator' => null,//user function for generation unique id for ticket or null for standart generator (The ticket id will be something like this: lkLHOoIho)
     ],

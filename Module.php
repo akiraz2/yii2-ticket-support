@@ -84,6 +84,10 @@ class Module extends \yii\base\Module
 
     public $userNameSupport = 'Support';
     
+
+    /** @var boolean If true it makes extension compatible to yii2 basic template */
+    public $yii2basictemplate = false;
+
     /**
      * @var null|false|function Function to generate a hash
      * for example,
@@ -93,6 +97,7 @@ class Module extends \yii\base\Module
      *
      */
     public $hashGenerator = null;    
+
 
     /**
      * Translate message
