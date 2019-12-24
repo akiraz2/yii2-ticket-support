@@ -23,7 +23,7 @@ return [
     'sourcePath' => '@vendor/akiraz2/yii2-ticket-support/',
     'messagePath' => '@vendor/akiraz2/yii2-ticket-support/messages',
     'languages' => [
-        'ru-RU',
+        'ru-RU', 'de',
     ],
     'translator' => 'Module::t',
     'sort' => false,
