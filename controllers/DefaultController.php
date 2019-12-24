@@ -68,6 +68,6 @@ class DefaultController extends Controller
         if ($id) {
             \Yii::$app->session->setFlash('success', \akiraz2\support\Module::t('support', 'Added job to fetch tickets from mailbox, please wait'));
         }
-        return $this->redirect('/support/ticket/manage');
+        return $this->redirect(['/support/ticket/manage']);
     }
 }
