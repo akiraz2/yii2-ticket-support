@@ -36,7 +36,7 @@ class TicketController extends Controller
             $array = ['backend' => [
                 'class' => BackendFilter::className(),
                 'actions' => [
-                    '*',
+                    'manage',
                 ],
             ]];
         }
